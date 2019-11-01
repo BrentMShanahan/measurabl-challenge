@@ -1,0 +1,23 @@
+.app-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  .logo-container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .fade {
+    opacity: 1;
+    animation: fade 4s linear;
+    animation-iteration-count:infinite;
+  }
+}
+
+@keyframes fade {
+  0%,100% { opacity: 0 }
+  50% { opacity: 1 }
+}

@@ -5,6 +5,7 @@ import {
 import {UserService} from '../services';
 import {User} from '../interfaces';
 import {TableColumn} from '../interfaces/table-column.interface';
+import {skip} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -36,13 +37,17 @@ export class AppComponent implements OnInit {
 
   public users: User[] = [];
 
+  public initializing = true;
+
   constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
-    this.userService.users.subscribe(users => {
-      this.users = users;
-    });
+    this.userService.users.pipe(skip(1))
+      .subscribe(users => {
+        this.users = users;
+        this.initializing = false;
+      });
 
     this.userService.getUserNames();
     this.userService.getUserAges();

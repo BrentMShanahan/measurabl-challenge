@@ -63,6 +63,11 @@ export class UserService {
       }
     });
 
+    // Test the loading spinner
+    // setTimeout(() => {
+    //   this.usersSubject.next(Object.values(this.userCache));
+    // }, 5000);
+
     this.usersSubject.next(Object.values(this.userCache));
   }
 

@@ -1,0 +1,21 @@
+<table class="w-100 table table-striped table-hover">
+
+  <thead>
+  <tr>
+    <th *ngFor="let column of tableColumns"
+        class="table-header text-white text-center py-2">
+      {{column.label}}
+    </th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td *ngFor="let column of tableColumns"
+        class="border border-light text-center py-2 font-weight-light">
+      {{user[column.selector]}}
+    </td>
+  </tr>
+  </tbody>
+
+</table>
