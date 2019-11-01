@@ -1,27 +1,35 @@
-# MeasurablChallenge
+### Measurabl Programming Task
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
+##### Goal
+The main goal of this task is to have some code for us to talk about during your next interview. We would like to see how you solve technical problems and your approach to the solution. If you're not able to set aside enough time to complete this, please provide a relevant example of some recent code you have written that we can review instead.
 
-## Development server
+##### Task
+1. Write a code snippet that will call both end points and generate a table that lists all of the fields (i.e. id, first name, last name, and age).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Example endpoints:
+* http://5c37c33f7820ff0014d927c5.mockapi.io/msr/ages returns an array of objects containing a user’s id and age. e.g.
 
-## Code scaffolding
+	```[{"id":"1","age":79},{"id":"2","age":12},{"id":"4","age":71},{"id":"5","age":51},{"id":"8","age":14},{"id":"9","age":71},{"id":"10","age":83}]```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* http://5c37c33f7820ff0014d927c5.mockapi.io/msr/names returns an array of objects containing a user’s "id", first 
+names: 
 
-## Build
+	```[{"id":"1","firstName":"Karen","lastName":"Page"},{"id":"2","firstName":"Jessica","lastName":"Jones"},{"id":"3","firstName":"Frank","lastName":"Castle"},{"id":"4","firstName":"Matt","lastName":"Murdock"},{"id":"5","firstName":"Luke","lastName":"Cage"},{"id":"6","firstName":"Danny","lastName":"Rand"},{"id":"7","firstName":"Trish","lastName":"Walker"},{"id":"8","firstName":"Foggy","lastName":"Nelson"},{"id":"9","firstName":"Jeri","lastName":"Hogarth"}]```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+2. Create a web application that will call both end points and generate a table that lists all of the fields (i.e. id, first name, last name, and age).
+```
+| ID | First Name | Last Name | Age |
+|----|------------|-----------|-----|
+|    |            |           |     |
+|    |            |           |     |
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+_All fields should be displayed regardless if the row is complete_. List out any assumptions that you may have. Please feel free to ask any questions. If you have _extra_ time, please unit test your code. If not, please list out the test cases you would test for. Angular is preferred, but you are welcome to use any libraries or frameworks that you're comfortable with.
 
-## Running end-to-end tests
+##### Assumptions
+- You can assume that the id columns have a foreign key relationship.
+- You cannot assume each id exists in both tables.
+- If you have other assumptions, please write them out and send them with your code.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Please respond with an email with a link to both applications, on GitHub, Stack Blitz, CodePen, or any other online code snippet service. Please let us know if this will take you longer than 48 hours to complete.
