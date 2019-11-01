@@ -44,8 +44,16 @@ describe('User Service', () => {
 
   it('#getUserNames should make an HTTP GET request and retrieve user names', () => {
     const dummyUsers: any = [
-      {id: 1, firstName: 'Flap', lastName: 'Jack'},
-      {id: 2, firstName: 'Pan', lastName: 'Cake'}
+      {
+        id: 1,
+        firstName: 'Flap',
+        lastName: 'Jack'
+      },
+      {
+        id: 2,
+        firstName: 'Pan',
+        lastName: 'Cake'
+      }
     ];
 
     service.getUserNames();
@@ -54,18 +62,25 @@ describe('User Service', () => {
       .toBe('GET');
     req.flush(dummyUsers);
 
-    service.users.pipe(skip(1)).subscribe(users => {
-      expect(users.length)
-        .toBe(2);
-      expect(users)
-        .toEqual(dummyUsers);
-    });
+    service.users.pipe(skip(1))
+      .subscribe(users => {
+        expect(users.length)
+          .toBe(2);
+        expect(users)
+          .toEqual(dummyUsers);
+      });
   });
 
   it('#getUserAges should make an HTTP GET request and retrieve user ages', () => {
     const dummyUsers: any = [
-      {id: 1, age: 100},
-      {id: 2, age: 45}
+      {
+        id: 1,
+        age: 100
+      },
+      {
+        id: 2,
+        age: 45
+      }
     ];
 
     service.getUserNames();
@@ -74,12 +89,17 @@ describe('User Service', () => {
       .toBe('GET');
     req.flush(dummyUsers);
 
-    service.users.pipe(skip(1)).subscribe(users => {
-      expect(users.length)
-        .toBe(2);
-      expect(users)
-        .toEqual(dummyUsers);
-    });
+    service.users.pipe(skip(1))
+      .subscribe(users => {
+        expect(users.length)
+          .toBe(2);
+        expect(users)
+          .toEqual(dummyUsers);
+      });
   });
+
+  // TODO - Implement the following tests:
+  // getUserNames failure
+  // getUserAges failure
 
 });

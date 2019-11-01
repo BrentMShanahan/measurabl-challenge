@@ -1,18 +1,23 @@
 import {
   Component,
+  OnDestroy,
   OnInit
 } from '@angular/core';
 import {UserService} from '../services';
 import {User} from '../interfaces';
 import {TableColumn} from '../interfaces/table-column.interface';
-import {skip} from 'rxjs/operators';
+import {
+  skip,
+  takeUntil
+} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   public title = 'Measurabl Challenge';
 
@@ -39,11 +44,13 @@ export class AppComponent implements OnInit {
 
   public initializing = true;
 
+  private unsubscribe: Subject<boolean> = new Subject<boolean>();
+
   constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
-    this.userService.users.pipe(skip(1))
+    this.userService.users.pipe(skip(1), takeUntil(this.unsubscribe))
       .subscribe(users => {
         this.users = users;
         this.initializing = false;
@@ -51,6 +58,11 @@ export class AppComponent implements OnInit {
 
     this.userService.getUserNames();
     this.userService.getUserAges();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next(true);
+    this.unsubscribe.complete();
   }
 
 
