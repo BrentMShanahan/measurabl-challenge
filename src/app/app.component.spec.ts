@@ -8,6 +8,7 @@ import {UserService} from '../services';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {TableComponent} from './components/table/table.component';
 import {LoadingSpinnerComponent} from './components/loading-spinner/loading-spinner.component';
+import {MockUserService} from '../testing/MockUserService.service';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -21,7 +22,10 @@ describe('AppComponent', () => {
       ],
       imports: [HttpClientTestingModule],
       providers: [
-        UserService
+        {
+          provide: UserService,
+          useClass: MockUserService
+        }
       ]
     })
       .compileComponents();
@@ -49,4 +53,5 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h1').textContent)
       .toContain('Measurabl Challenge!');
   });
+
 });

@@ -4,6 +4,7 @@ import {
   ComponentFixture
 } from '@angular/core/testing';
 import {LoadingSpinnerComponent} from './loading-spinner.component';
+import {By} from '@angular/platform-browser';
 
 describe('Loading Spinner Component', () => {
 
@@ -27,6 +28,20 @@ describe('Loading Spinner Component', () => {
   it('should create the component', () => {
     expect(component)
       .toBeTruthy();
+  });
+
+  it('should display the loading overlay if isLoading is true', () => {
+    component.isLoading = true;
+    fixture.detectChanges();
+    const img = fixture.debugElement.query(By.css('img'));
+    expect(img).toBeTruthy();
+  });
+
+  it('should not display the loading overlay if isLoading is false', () => {
+    component.isLoading = false;
+    fixture.detectChanges();
+    const img = fixture.debugElement.query(By.css('img'));
+    expect(img).toBeFalsy();
   });
 
 });
