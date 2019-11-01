@@ -1,5 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {UserService} from '../services';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -7,6 +9,10 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [HttpClientTestingModule],
+      providers: [
+        UserService
+      ]
     }).compileComponents();
   }));
 
@@ -16,16 +22,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'measurabl-challenge'`, () => {
+  it(`should have as title 'Measurabl Challenge'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('measurabl-challenge');
+    expect(app.title).toEqual('Measurabl Challenge');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to measurabl-challenge!');
+    expect(compiled.querySelector('h1').textContent).toContain('Measurabl Challenge!');
   });
 });
