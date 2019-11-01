@@ -5,10 +5,10 @@ export interface User {
 
   id: number;
 
-  firstName: string;
+  firstName?: string;
 
-  lastName: string;
+  lastName?: string;
 
-  age: number;
+  age?: number;
 
 }

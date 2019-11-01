@@ -13,7 +13,7 @@
   <tr *ngFor="let user of users">
     <td *ngFor="let column of tableColumns"
         class="border border-light text-center py-2 font-weight-light">
-      {{user[column.selector]}}
+      {{(user[column.selector] ? user[column.selector] : '-')}}
     </td>
   </tr>
   </tbody>
